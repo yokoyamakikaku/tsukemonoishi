@@ -1,0 +1,15 @@
+{
+  "main": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-tsukemonoishi-main-130340-authRole",
+      "UnauthRoleArn": "arn:aws:iam::693825121436:role/amplify-tsukemonoishi-main-130340-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::693825121436:role/amplify-tsukemonoishi-main-130340-authRole",
+      "Region": "ap-northeast-1",
+      "DeploymentBucketName": "amplify-tsukemonoishi-main-130340-deployment",
+      "UnauthRoleName": "amplify-tsukemonoishi-main-130340-unauthRole",
+      "StackName": "amplify-tsukemonoishi-main-130340",
+      "StackId": "arn:aws:cloudformation:ap-northeast-1:693825121436:stack/amplify-tsukemonoishi-main-130340/feb3faa0-6bd8-11ee-a0e8-06a1c746dd97",
+      "AmplifyAppId": "d2a6yw4jy2j7zt"
+    }
+  }
+}
