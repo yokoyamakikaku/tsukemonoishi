@@ -9,7 +9,7 @@ import { Category, CommunityPost, GetCommunityPostQueryVariables } from "@/API"
 import DateTimeLabel from "@/components/DateTimeLabel"
 import MarkdownRenderer from "@/components/MarkdownRenderer"
 
-const Post = () => {
+const ViewPost = () => {
   const { postId: id } = useParams()
 
   const query = useQuery({
@@ -65,4 +65,4 @@ const Post = () => {
   )
 }
 
-export default Post
+export default ViewPost
