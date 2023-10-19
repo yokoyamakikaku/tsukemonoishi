@@ -34,7 +34,8 @@ export default function RootLayout ({
       <script
         async
         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1057611392436338"
-        crossOrigin="anonymous" />
+        crossOrigin="anonymous">
+      </script>
     </html>
   )
 }
