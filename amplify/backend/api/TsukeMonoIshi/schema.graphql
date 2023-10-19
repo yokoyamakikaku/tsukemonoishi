@@ -1,0 +1,52 @@
+enum PlanType {
+  COMMUNITY
+  PREMIUM
+}
+
+type Account @model @auth (rules: [
+  { allow: groups, groups: ["admin"], operations: [create, read, update, delete] },
+  { allow: owner, ownerField: "id", operations: [read] }
+]) {
+  id: ID!
+  name: String!
+  plan: PlanType!
+  boughtPremiumPostIds: [String!]
+}
+
+type Category @model @auth(rules: [
+  { allow: groups, groups: ["admin"], operations: [create, read, update, delete] },
+  { allow: public, operations: [read] }
+]) {
+  id: ID!
+  title: String!
+  name: String! @index(name: "byName", queryField: "listCategoriesByName")
+  description: String!
+  communityPosts: [CommunityPost] @hasMany(indexName: "byCategoryIdWithCreatedAt", fields: ["id"])
+  premiumPosts: [PremiumPost] @hasMany(indexName: "byCategoryIdWithCreatedAt", fields: ["id"])
+}
+
+type CommunityPost @model @auth(rules: [
+  { allow: groups, groups: ["admin"], operations: [create, read, update, delete] },
+  { allow: public, operations: [read] }
+]) {
+  id: ID!
+  title: String!
+  body: String!
+  categoryId: ID!
+    @index(name: "byCategoryIdWithCreatedAt", queryField: "listCommunityPostsByCategoryIdWithCreatedAt", sortKeyFields: ["createdAt"])
+  createdAt: AWSDateTime!
+  category: Category @hasOne(fields: ["categoryId"])
+}
+
+type PremiumPost @model @auth(rules: [
+  { allow: groups, groups: ["admin"], operations: [create, read, update, delete] },
+  { allow: groups, groups: ["premium"], operations: [read] }
+]) {
+  id: ID!
+  title: String!
+  body: String!
+  categoryId: ID!
+    @index(name: "byCategoryIdWithCreatedAt", queryField: "listPremiumPostsByCategoryIdWithCreatedAt", sortKeyFields: ["createdAt"])
+  createdAt: AWSDateTime!
+  category: Category @hasOne(fields: ["categoryId"])
+}

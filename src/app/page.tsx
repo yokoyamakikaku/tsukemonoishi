@@ -1,5 +1,7 @@
-import TsukeMonoIshi from './components/TsukeMonoIshi'
+import LatestPosts from "./components/LatestPosts";
 
-export default function Home() {
-  return <TsukeMonoIshi />
+export default function Home () {
+  return (
+    <LatestPosts />
+  )
 }

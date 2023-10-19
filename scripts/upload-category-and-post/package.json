@@ -1,0 +1,17 @@
+{
+  "name": "upload-category-and-post",
+  "type": "module",
+  "dependencies": {
+    "@aws-sdk/client-appsync": "^3.431.0",
+    "@aws-sdk/client-dynamodb": "^3.431.0",
+    "@aws-sdk/credential-providers": "^3.431.0",
+    "@aws-sdk/util-dynamodb": "^3.431.0",
+    "dotenv": "^16.3.1",
+    "inquirer": "^9.2.11",
+    "openai": "^4.12.4",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "@types/uuid": "^9.0.6"
+  }
+}

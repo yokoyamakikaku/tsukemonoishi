@@ -1,0 +1,12 @@
+{
+  "AppSyncApiName": "TsukeMonoIshi",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthCognitoUserPoolId": {
+    "Fn::GetAtt": [
+      "authTsukeMonoIshiAuth",
+      "Outputs.UserPoolId"
+    ]
+  },
+  "AuthModeLastUpdated": "2023-10-19T09:15:19.659Z"
+}

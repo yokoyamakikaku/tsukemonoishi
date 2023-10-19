@@ -58,3 +58,5 @@ amplifytools.xcconfig
 
 .yarn/*
 !.yarn/releases
+
+data
