@@ -2,6 +2,8 @@
 
 import { FC, PropsWithChildren } from 'react'
 import Link from 'next/link'
+import { useQueries, useQuery } from '@tanstack/react-query'
+import { Auth } from '@aws-amplify/auth'
 
 const NavigationLink: FC<{ href: string } & PropsWithChildren> = ({ href, children}) => {
   return (
@@ -10,6 +12,19 @@ const NavigationLink: FC<{ href: string } & PropsWithChildren> = ({ href, childr
 }
 
 const Navigation = () => {
+  const query = useQuery({
+    queryKey: ["authStatus"],
+    async queryFn () {
+      try {
+        await Auth.currentAuthenticatedUser()
+        return 'AUTHORIZED'
+      } catch {
+        return 'NOT_AUTHORIZED'
+      }
+    }
+  })
+
+
   return (
     <>
       <div className="max-w-4xl mx-auto flex flex-col py-6 px-1 justify-center items-center gap-4">
@@ -26,7 +41,13 @@ const Navigation = () => {
           <NavigationLink href="/usage">漬物石の使い方</NavigationLink>
           <NavigationLink href="/history">漬物石の歴史</NavigationLink>
           <NavigationLink href="/recommendations">漬物石のおすすめ</NavigationLink>
-          <NavigationLink href="/login">ログイン</NavigationLink>
+          {query.isSuccess && (
+            query.data === "AUTHORIZED" ? (
+              <NavigationLink href="/user">マイページ</NavigationLink>
+            ) : (
+              <NavigationLink href="/login">ログイン</NavigationLink>
+            )
+          )}
         </div>
       </div>
     </>

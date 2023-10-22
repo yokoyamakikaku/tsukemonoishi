@@ -54,7 +54,6 @@ const CategoryPosts = () => {
   })
 
   const categoryId = query.data
-  console.log({categoryId})
 
   const postQuery = useInfiniteQuery({
     queryKey: ['latest'],
