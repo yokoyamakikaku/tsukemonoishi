@@ -1,7 +1,8 @@
+import { ApiClient } from '../types'
+
 import * as mutations from '@/graphql/mutations'
 import * as queries from '@/graphql/queries'
 import { CreatePremiumPostInput, DeletePremiumPostInput, ListPremiumPostsQuery, UpdatePremiumPostInput } from '@/API'
-import { ApiClient } from '../types'
 
 export function createPremiumPostWithClient (client: ApiClient) {
   return async function createPremiumPost (input: CreatePremiumPostInput) {

@@ -1,5 +1,5 @@
-import { CreatePremiumPostInput, DeletePremiumPostInput, UpdatePremiumPostInput } from "@/API";
 import { serverClient as client } from "../server";
+
 import {
   createPremiumPostWithClient,
   deletePremiumPostWithClient,
@@ -7,6 +7,8 @@ import {
   listPremiumPostsWithClient,
   updatePremiumPostWithClient
 } from ".";
+
+import { CreatePremiumPostInput, DeletePremiumPostInput, UpdatePremiumPostInput } from "@/API";
 
 export async function createPremiumPost(input: CreatePremiumPostInput) {
   return await createPremiumPostWithClient(client)(input)

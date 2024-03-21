@@ -1,5 +1,5 @@
-import { CreateAccountInput, DeleteAccountInput, UpdateAccountInput } from "@/API";
 import { generateClient } from "aws-amplify/api";
+
 import {
   createAccountWithClient,
   deleteAccountWithClient,
@@ -7,6 +7,8 @@ import {
   listAccountsWithClient,
   updateAccountWithClient
 } from ".";
+
+import { CreateAccountInput, DeleteAccountInput, UpdateAccountInput } from "@/API";
 
 export async function createAccount(input: CreateAccountInput) {
   const client = generateClient()

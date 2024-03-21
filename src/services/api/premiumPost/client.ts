@@ -1,5 +1,5 @@
-import { CreatePremiumPostInput, DeletePremiumPostInput, UpdatePremiumPostInput } from "@/API";
 import { generateClient } from "aws-amplify/api";
+
 import {
   createPremiumPostWithClient,
   deletePremiumPostWithClient,
@@ -7,6 +7,8 @@ import {
   listPremiumPostsWithClient,
   updatePremiumPostWithClient
 } from ".";
+
+import { CreatePremiumPostInput, DeletePremiumPostInput, UpdatePremiumPostInput } from "@/API";
 
 export async function createPremiumPost(input: CreatePremiumPostInput) {
   const client = generateClient()

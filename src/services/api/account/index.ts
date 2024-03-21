@@ -1,7 +1,8 @@
+import { ApiClient } from '../types'
+
 import * as mutations from '@/graphql/mutations'
 import * as queries from '@/graphql/queries'
 import { CreateAccountInput, DeleteAccountInput, ListAccountsQuery, UpdateAccountInput } from '@/API'
-import { ApiClient } from '../types'
 
 export function createAccountWithClient (client: ApiClient) {
   return async function createAccount (input: CreateAccountInput) {
