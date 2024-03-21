@@ -72,10 +72,15 @@ export const createCategory = /* GraphQL */ `mutation CreateCategory(
     name
     description
     communityPosts {
-      nextToken
-      __typename
-    }
-    premiumPosts {
+      items {
+        id
+        title
+        body
+        categoryId
+        createdAt
+        updatedAt
+        __typename
+      }
       nextToken
       __typename
     }
@@ -98,10 +103,15 @@ export const updateCategory = /* GraphQL */ `mutation UpdateCategory(
     name
     description
     communityPosts {
-      nextToken
-      __typename
-    }
-    premiumPosts {
+      items {
+        id
+        title
+        body
+        categoryId
+        createdAt
+        updatedAt
+        __typename
+      }
       nextToken
       __typename
     }
@@ -124,10 +134,15 @@ export const deleteCategory = /* GraphQL */ `mutation DeleteCategory(
     name
     description
     communityPosts {
-      nextToken
-      __typename
-    }
-    premiumPosts {
+      items {
+        id
+        title
+        body
+        categoryId
+        createdAt
+        updatedAt
+        __typename
+      }
       nextToken
       __typename
     }
@@ -155,6 +170,10 @@ export const createCommunityPost = /* GraphQL */ `mutation CreateCommunityPost(
       title
       name
       description
+      communityPosts {
+        nextToken
+        __typename
+      }
       createdAt
       updatedAt
       __typename
@@ -182,6 +201,10 @@ export const updateCommunityPost = /* GraphQL */ `mutation UpdateCommunityPost(
       title
       name
       description
+      communityPosts {
+        nextToken
+        __typename
+      }
       createdAt
       updatedAt
       __typename
@@ -209,6 +232,10 @@ export const deleteCommunityPost = /* GraphQL */ `mutation DeleteCommunityPost(
       title
       name
       description
+      communityPosts {
+        nextToken
+        __typename
+      }
       createdAt
       updatedAt
       __typename
@@ -236,6 +263,10 @@ export const createPremiumPost = /* GraphQL */ `mutation CreatePremiumPost(
       title
       name
       description
+      communityPosts {
+        nextToken
+        __typename
+      }
       createdAt
       updatedAt
       __typename
@@ -263,6 +294,10 @@ export const updatePremiumPost = /* GraphQL */ `mutation UpdatePremiumPost(
       title
       name
       description
+      communityPosts {
+        nextToken
+        __typename
+      }
       createdAt
       updatedAt
       __typename
@@ -290,6 +325,10 @@ export const deletePremiumPost = /* GraphQL */ `mutation DeletePremiumPost(
       title
       name
       description
+      communityPosts {
+        nextToken
+        __typename
+      }
       createdAt
       updatedAt
       __typename

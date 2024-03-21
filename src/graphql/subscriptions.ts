@@ -76,6 +76,10 @@ export const onCreatePremiumPost = /* GraphQL */ `subscription OnCreatePremiumPo
       title
       name
       description
+      communityPosts {
+        nextToken
+        __typename
+      }
       createdAt
       updatedAt
       __typename
@@ -102,6 +106,10 @@ export const onUpdatePremiumPost = /* GraphQL */ `subscription OnUpdatePremiumPo
       title
       name
       description
+      communityPosts {
+        nextToken
+        __typename
+      }
       createdAt
       updatedAt
       __typename
@@ -128,6 +136,10 @@ export const onDeletePremiumPost = /* GraphQL */ `subscription OnDeletePremiumPo
       title
       name
       description
+      communityPosts {
+        nextToken
+        __typename
+      }
       createdAt
       updatedAt
       __typename
@@ -147,10 +159,15 @@ export const onCreateCategory = /* GraphQL */ `subscription OnCreateCategory($fi
     name
     description
     communityPosts {
-      nextToken
-      __typename
-    }
-    premiumPosts {
+      items {
+        id
+        title
+        body
+        categoryId
+        createdAt
+        updatedAt
+        __typename
+      }
       nextToken
       __typename
     }
@@ -170,10 +187,15 @@ export const onUpdateCategory = /* GraphQL */ `subscription OnUpdateCategory($fi
     name
     description
     communityPosts {
-      nextToken
-      __typename
-    }
-    premiumPosts {
+      items {
+        id
+        title
+        body
+        categoryId
+        createdAt
+        updatedAt
+        __typename
+      }
       nextToken
       __typename
     }
@@ -193,10 +215,15 @@ export const onDeleteCategory = /* GraphQL */ `subscription OnDeleteCategory($fi
     name
     description
     communityPosts {
-      nextToken
-      __typename
-    }
-    premiumPosts {
+      items {
+        id
+        title
+        body
+        categoryId
+        createdAt
+        updatedAt
+        __typename
+      }
       nextToken
       __typename
     }
@@ -223,6 +250,10 @@ export const onCreateCommunityPost = /* GraphQL */ `subscription OnCreateCommuni
       title
       name
       description
+      communityPosts {
+        nextToken
+        __typename
+      }
       createdAt
       updatedAt
       __typename
@@ -249,6 +280,10 @@ export const onUpdateCommunityPost = /* GraphQL */ `subscription OnUpdateCommuni
       title
       name
       description
+      communityPosts {
+        nextToken
+        __typename
+      }
       createdAt
       updatedAt
       __typename
@@ -275,6 +310,10 @@ export const onDeleteCommunityPost = /* GraphQL */ `subscription OnDeleteCommuni
       title
       name
       description
+      communityPosts {
+        nextToken
+        __typename
+      }
       createdAt
       updatedAt
       __typename

@@ -1,11 +1,18 @@
-'use client'
-
 import ViewPost from "./components/ViewPost"
 
-const PostPage = () => {
+import { getCommunityPost } from "@/services/api/communityPost/server"
+
+export default async function PostPage ({
+  params: {
+    postId
+  }
+}: {
+  params: {
+    postId: string
+  }
+}) {
+  const post = await getCommunityPost(postId)
   return (
-    <ViewPost />
+    <ViewPost post={post} />
   )
 }
-
-export default PostPage

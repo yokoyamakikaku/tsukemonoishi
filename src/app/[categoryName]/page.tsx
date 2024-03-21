@@ -1,11 +1,23 @@
-import CategoryHead from "./components/CategoryHead";
-import CategoryPosts from "./components/CategoryPosts";
+import ViewCategorySummary from "./components/ViewCategorySummary";
+import { ViewLatestCategoryPosts } from "./components/ViewLatestCategoryPosts";
 
-export default function CategoryPage () {
+import { listPaginatedLatestCommunityPostsByCategoryId } from "@/services/api/communityPost/server";
+import { getCategoryByName } from "@/services/api/category/server";
+
+export default async function CategoryPage ({
+  params: { categoryName }
+}: {
+  params: { categoryName: string }
+}) {
+  const category = await getCategoryByName(categoryName)
+  const page = await listPaginatedLatestCommunityPostsByCategoryId(category.id)
   return (
     <>
-      <CategoryHead />
-      <CategoryPosts />
+      <ViewCategorySummary
+        category={category} />
+      <ViewLatestCategoryPosts
+        categoryId={category.id}
+        page={page} />
     </>
   )
 }

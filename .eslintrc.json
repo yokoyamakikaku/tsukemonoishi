@@ -1,3 +1,19 @@
 {
-  "extends": ["next/core-web-vitals"]
+  "extends": ["next/core-web-vitals"],
+  "plugins": [
+    "import",
+    "unused-imports"
+  ],
+  "rules": {
+    "no-multi-spaces": "error",
+    "no-multiple-empty-lines": ["error", {
+      "max": 1,
+      "maxEOF": 1,
+      "maxBOF": 0
+    }],
+    "unused-imports/no-unused-imports": "error",
+    "import/order": ["error", {
+      "newlines-between": "always"
+    }]
+  }
 }

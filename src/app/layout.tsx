@@ -1,9 +1,10 @@
 import './globals.css'
 import type { Metadata } from 'next'
 import { Zen_Old_Mincho } from 'next/font/google'
-import Navigation from './components/Navigation'
-import Footer from './components/Footer'
-import Providers from './components/Providers'
+
+import Navigation from '@/components/Navigation'
+import Footer from '@/components/Footer'
+import Providers from '@/components/Providers'
 
 const font = Zen_Old_Mincho({
   weight: '400',

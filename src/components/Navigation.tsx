@@ -2,28 +2,17 @@
 
 import { FC, PropsWithChildren } from 'react'
 import Link from 'next/link'
-import { useQueries, useQuery } from '@tanstack/react-query'
-import { Auth } from '@aws-amplify/auth'
+
+import { useGetAuthStatusQuery } from '@/hooks/auth'
 
 const NavigationLink: FC<{ href: string } & PropsWithChildren> = ({ href, children}) => {
   return (
-    <Link className="grow p-1 hover:bg-gray-50 rounded text-center"  href={href}>{children}</Link>
+    <Link className="grow p-1 hover:bg-gray-50 rounded text-center" href={href}>{children}</Link>
   )
 }
 
-const Navigation = () => {
-  const query = useQuery({
-    queryKey: ["authStatus"],
-    async queryFn () {
-      try {
-        await Auth.currentAuthenticatedUser()
-        return 'AUTHORIZED'
-      } catch {
-        return 'NOT_AUTHORIZED'
-      }
-    }
-  })
-
+export default function Navigation () {
+  const query = useGetAuthStatusQuery()
 
   return (
     <>
@@ -53,5 +42,3 @@ const Navigation = () => {
     </>
   )
 }
-
-export default Navigation

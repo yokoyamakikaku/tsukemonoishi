@@ -1,9 +1,9 @@
 import ViewCurrentUser from "./components/ViewCurrentUser"
 
-const UserPage = () => {
-  return (
-    <ViewCurrentUser />
-  )
-}
+import { getAuthorized } from "@/services/auth/server"
 
-export default UserPage
+export default async function UserPage() {
+  const authorized = await getAuthorized()
+  if (!authorized) throw new Error('Unauthorized')
+  return <ViewCurrentUser />
+}

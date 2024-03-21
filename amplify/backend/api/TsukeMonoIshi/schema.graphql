@@ -22,7 +22,6 @@ type Category @model @auth(rules: [
   name: String! @index(name: "byName", queryField: "listCategoriesByName")
   description: String!
   communityPosts: [CommunityPost] @hasMany(indexName: "byCategoryIdWithCreatedAt", fields: ["id"])
-  premiumPosts: [PremiumPost] @hasMany(indexName: "byCategoryIdWithCreatedAt", fields: ["id"])
 }
 
 type CommunityPost @model @auth(rules: [

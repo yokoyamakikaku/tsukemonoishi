@@ -113,7 +113,6 @@ export type Category = {
   name: string,
   description: string,
   communityPosts?: ModelCommunityPostConnection | null,
-  premiumPosts?: ModelPremiumPostConnection | null,
   createdAt: string,
   updatedAt: string,
 };
@@ -126,23 +125,6 @@ export type ModelCommunityPostConnection = {
 
 export type CommunityPost = {
   __typename: "CommunityPost",
-  id: string,
-  title: string,
-  body: string,
-  categoryId: string,
-  createdAt: string,
-  category?: Category | null,
-  updatedAt: string,
-};
-
-export type ModelPremiumPostConnection = {
-  __typename: "ModelPremiumPostConnection",
-  items:  Array<PremiumPost | null >,
-  nextToken?: string | null,
-};
-
-export type PremiumPost = {
-  __typename: "PremiumPost",
   id: string,
   title: string,
   body: string,
@@ -227,6 +209,17 @@ export type ModelPremiumPostConditionInput = {
   not?: ModelPremiumPostConditionInput | null,
 };
 
+export type PremiumPost = {
+  __typename: "PremiumPost",
+  id: string,
+  title: string,
+  body: string,
+  categoryId: string,
+  createdAt: string,
+  category?: Category | null,
+  updatedAt: string,
+};
+
 export type UpdatePremiumPostInput = {
   id: string,
   title?: string | null,
@@ -264,6 +257,12 @@ export type ModelPremiumPostFilterInput = {
   and?: Array< ModelPremiumPostFilterInput | null > | null,
   or?: Array< ModelPremiumPostFilterInput | null > | null,
   not?: ModelPremiumPostFilterInput | null,
+};
+
+export type ModelPremiumPostConnection = {
+  __typename: "ModelPremiumPostConnection",
+  items:  Array<PremiumPost | null >,
+  nextToken?: string | null,
 };
 
 export type ModelStringKeyConditionInput = {
@@ -441,10 +440,15 @@ export type CreateCategoryMutation = {
     description: string,
     communityPosts?:  {
       __typename: "ModelCommunityPostConnection",
-      nextToken?: string | null,
-    } | null,
-    premiumPosts?:  {
-      __typename: "ModelPremiumPostConnection",
+      items:  Array< {
+        __typename: "CommunityPost",
+        id: string,
+        title: string,
+        body: string,
+        categoryId: string,
+        createdAt: string,
+        updatedAt: string,
+      } | null >,
       nextToken?: string | null,
     } | null,
     createdAt: string,
@@ -466,10 +470,15 @@ export type UpdateCategoryMutation = {
     description: string,
     communityPosts?:  {
       __typename: "ModelCommunityPostConnection",
-      nextToken?: string | null,
-    } | null,
-    premiumPosts?:  {
-      __typename: "ModelPremiumPostConnection",
+      items:  Array< {
+        __typename: "CommunityPost",
+        id: string,
+        title: string,
+        body: string,
+        categoryId: string,
+        createdAt: string,
+        updatedAt: string,
+      } | null >,
       nextToken?: string | null,
     } | null,
     createdAt: string,
@@ -491,10 +500,15 @@ export type DeleteCategoryMutation = {
     description: string,
     communityPosts?:  {
       __typename: "ModelCommunityPostConnection",
-      nextToken?: string | null,
-    } | null,
-    premiumPosts?:  {
-      __typename: "ModelPremiumPostConnection",
+      items:  Array< {
+        __typename: "CommunityPost",
+        id: string,
+        title: string,
+        body: string,
+        categoryId: string,
+        createdAt: string,
+        updatedAt: string,
+      } | null >,
       nextToken?: string | null,
     } | null,
     createdAt: string,
@@ -521,6 +535,10 @@ export type CreateCommunityPostMutation = {
       title: string,
       name: string,
       description: string,
+      communityPosts?:  {
+        __typename: "ModelCommunityPostConnection",
+        nextToken?: string | null,
+      } | null,
       createdAt: string,
       updatedAt: string,
     } | null,
@@ -547,6 +565,10 @@ export type UpdateCommunityPostMutation = {
       title: string,
       name: string,
       description: string,
+      communityPosts?:  {
+        __typename: "ModelCommunityPostConnection",
+        nextToken?: string | null,
+      } | null,
       createdAt: string,
       updatedAt: string,
     } | null,
@@ -573,6 +595,10 @@ export type DeleteCommunityPostMutation = {
       title: string,
       name: string,
       description: string,
+      communityPosts?:  {
+        __typename: "ModelCommunityPostConnection",
+        nextToken?: string | null,
+      } | null,
       createdAt: string,
       updatedAt: string,
     } | null,
@@ -599,6 +625,10 @@ export type CreatePremiumPostMutation = {
       title: string,
       name: string,
       description: string,
+      communityPosts?:  {
+        __typename: "ModelCommunityPostConnection",
+        nextToken?: string | null,
+      } | null,
       createdAt: string,
       updatedAt: string,
     } | null,
@@ -625,6 +655,10 @@ export type UpdatePremiumPostMutation = {
       title: string,
       name: string,
       description: string,
+      communityPosts?:  {
+        __typename: "ModelCommunityPostConnection",
+        nextToken?: string | null,
+      } | null,
       createdAt: string,
       updatedAt: string,
     } | null,
@@ -651,6 +685,10 @@ export type DeletePremiumPostMutation = {
       title: string,
       name: string,
       description: string,
+      communityPosts?:  {
+        __typename: "ModelCommunityPostConnection",
+        nextToken?: string | null,
+      } | null,
       createdAt: string,
       updatedAt: string,
     } | null,
@@ -714,6 +752,10 @@ export type GetPremiumPostQuery = {
       title: string,
       name: string,
       description: string,
+      communityPosts?:  {
+        __typename: "ModelCommunityPostConnection",
+        nextToken?: string | null,
+      } | null,
       createdAt: string,
       updatedAt: string,
     } | null,
@@ -737,6 +779,15 @@ export type ListPremiumPostsQuery = {
       body: string,
       categoryId: string,
       createdAt: string,
+      category?:  {
+        __typename: "Category",
+        id: string,
+        title: string,
+        name: string,
+        description: string,
+        createdAt: string,
+        updatedAt: string,
+      } | null,
       updatedAt: string,
     } | null >,
     nextToken?: string | null,
@@ -762,6 +813,15 @@ export type ListPremiumPostsByCategoryIdWithCreatedAtQuery = {
       body: string,
       categoryId: string,
       createdAt: string,
+      category?:  {
+        __typename: "Category",
+        id: string,
+        title: string,
+        name: string,
+        description: string,
+        createdAt: string,
+        updatedAt: string,
+      } | null,
       updatedAt: string,
     } | null >,
     nextToken?: string | null,
@@ -781,10 +841,15 @@ export type GetCategoryQuery = {
     description: string,
     communityPosts?:  {
       __typename: "ModelCommunityPostConnection",
-      nextToken?: string | null,
-    } | null,
-    premiumPosts?:  {
-      __typename: "ModelPremiumPostConnection",
+      items:  Array< {
+        __typename: "CommunityPost",
+        id: string,
+        title: string,
+        body: string,
+        categoryId: string,
+        createdAt: string,
+        updatedAt: string,
+      } | null >,
       nextToken?: string | null,
     } | null,
     createdAt: string,
@@ -807,6 +872,10 @@ export type ListCategoriesQuery = {
       title: string,
       name: string,
       description: string,
+      communityPosts?:  {
+        __typename: "ModelCommunityPostConnection",
+        nextToken?: string | null,
+      } | null,
       createdAt: string,
       updatedAt: string,
     } | null >,
@@ -831,6 +900,10 @@ export type ListCategoriesByNameQuery = {
       title: string,
       name: string,
       description: string,
+      communityPosts?:  {
+        __typename: "ModelCommunityPostConnection",
+        nextToken?: string | null,
+      } | null,
       createdAt: string,
       updatedAt: string,
     } | null >,
@@ -856,6 +929,10 @@ export type GetCommunityPostQuery = {
       title: string,
       name: string,
       description: string,
+      communityPosts?:  {
+        __typename: "ModelCommunityPostConnection",
+        nextToken?: string | null,
+      } | null,
       createdAt: string,
       updatedAt: string,
     } | null,
@@ -879,6 +956,15 @@ export type ListCommunityPostsQuery = {
       body: string,
       categoryId: string,
       createdAt: string,
+      category?:  {
+        __typename: "Category",
+        id: string,
+        title: string,
+        name: string,
+        description: string,
+        createdAt: string,
+        updatedAt: string,
+      } | null,
       updatedAt: string,
     } | null >,
     nextToken?: string | null,
@@ -904,6 +990,15 @@ export type ListCommunityPostsByCategoryIdWithCreatedAtQuery = {
       body: string,
       categoryId: string,
       createdAt: string,
+      category?:  {
+        __typename: "Category",
+        id: string,
+        title: string,
+        name: string,
+        description: string,
+        createdAt: string,
+        updatedAt: string,
+      } | null,
       updatedAt: string,
     } | null >,
     nextToken?: string | null,
@@ -979,6 +1074,10 @@ export type OnCreatePremiumPostSubscription = {
       title: string,
       name: string,
       description: string,
+      communityPosts?:  {
+        __typename: "ModelCommunityPostConnection",
+        nextToken?: string | null,
+      } | null,
       createdAt: string,
       updatedAt: string,
     } | null,
@@ -1004,6 +1103,10 @@ export type OnUpdatePremiumPostSubscription = {
       title: string,
       name: string,
       description: string,
+      communityPosts?:  {
+        __typename: "ModelCommunityPostConnection",
+        nextToken?: string | null,
+      } | null,
       createdAt: string,
       updatedAt: string,
     } | null,
@@ -1029,6 +1132,10 @@ export type OnDeletePremiumPostSubscription = {
       title: string,
       name: string,
       description: string,
+      communityPosts?:  {
+        __typename: "ModelCommunityPostConnection",
+        nextToken?: string | null,
+      } | null,
       createdAt: string,
       updatedAt: string,
     } | null,
@@ -1049,10 +1156,15 @@ export type OnCreateCategorySubscription = {
     description: string,
     communityPosts?:  {
       __typename: "ModelCommunityPostConnection",
-      nextToken?: string | null,
-    } | null,
-    premiumPosts?:  {
-      __typename: "ModelPremiumPostConnection",
+      items:  Array< {
+        __typename: "CommunityPost",
+        id: string,
+        title: string,
+        body: string,
+        categoryId: string,
+        createdAt: string,
+        updatedAt: string,
+      } | null >,
       nextToken?: string | null,
     } | null,
     createdAt: string,
@@ -1073,10 +1185,15 @@ export type OnUpdateCategorySubscription = {
     description: string,
     communityPosts?:  {
       __typename: "ModelCommunityPostConnection",
-      nextToken?: string | null,
-    } | null,
-    premiumPosts?:  {
-      __typename: "ModelPremiumPostConnection",
+      items:  Array< {
+        __typename: "CommunityPost",
+        id: string,
+        title: string,
+        body: string,
+        categoryId: string,
+        createdAt: string,
+        updatedAt: string,
+      } | null >,
       nextToken?: string | null,
     } | null,
     createdAt: string,
@@ -1097,10 +1214,15 @@ export type OnDeleteCategorySubscription = {
     description: string,
     communityPosts?:  {
       __typename: "ModelCommunityPostConnection",
-      nextToken?: string | null,
-    } | null,
-    premiumPosts?:  {
-      __typename: "ModelPremiumPostConnection",
+      items:  Array< {
+        __typename: "CommunityPost",
+        id: string,
+        title: string,
+        body: string,
+        categoryId: string,
+        createdAt: string,
+        updatedAt: string,
+      } | null >,
       nextToken?: string | null,
     } | null,
     createdAt: string,
@@ -1126,6 +1248,10 @@ export type OnCreateCommunityPostSubscription = {
       title: string,
       name: string,
       description: string,
+      communityPosts?:  {
+        __typename: "ModelCommunityPostConnection",
+        nextToken?: string | null,
+      } | null,
       createdAt: string,
       updatedAt: string,
     } | null,
@@ -1151,6 +1277,10 @@ export type OnUpdateCommunityPostSubscription = {
       title: string,
       name: string,
       description: string,
+      communityPosts?:  {
+        __typename: "ModelCommunityPostConnection",
+        nextToken?: string | null,
+      } | null,
       createdAt: string,
       updatedAt: string,
     } | null,
@@ -1176,6 +1306,10 @@ export type OnDeleteCommunityPostSubscription = {
       title: string,
       name: string,
       description: string,
+      communityPosts?:  {
+        __typename: "ModelCommunityPostConnection",
+        nextToken?: string | null,
+      } | null,
       createdAt: string,
       updatedAt: string,
     } | null,

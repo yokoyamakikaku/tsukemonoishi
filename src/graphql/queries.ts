@@ -58,6 +58,10 @@ export const getPremiumPost = /* GraphQL */ `query GetPremiumPost($id: ID!) {
       title
       name
       description
+      communityPosts {
+        nextToken
+        __typename
+      }
       createdAt
       updatedAt
       __typename
@@ -82,6 +86,15 @@ export const listPremiumPosts = /* GraphQL */ `query ListPremiumPosts(
       body
       categoryId
       createdAt
+      category {
+        id
+        title
+        name
+        description
+        createdAt
+        updatedAt
+        __typename
+      }
       updatedAt
       __typename
     }
@@ -115,6 +128,15 @@ export const listPremiumPostsByCategoryIdWithCreatedAt = /* GraphQL */ `query Li
       body
       categoryId
       createdAt
+      category {
+        id
+        title
+        name
+        description
+        createdAt
+        updatedAt
+        __typename
+      }
       updatedAt
       __typename
     }
@@ -133,10 +155,15 @@ export const getCategory = /* GraphQL */ `query GetCategory($id: ID!) {
     name
     description
     communityPosts {
-      nextToken
-      __typename
-    }
-    premiumPosts {
+      items {
+        id
+        title
+        body
+        categoryId
+        createdAt
+        updatedAt
+        __typename
+      }
       nextToken
       __typename
     }
@@ -160,6 +187,10 @@ export const listCategories = /* GraphQL */ `query ListCategories(
       title
       name
       description
+      communityPosts {
+        nextToken
+        __typename
+      }
       createdAt
       updatedAt
       __typename
@@ -191,6 +222,10 @@ export const listCategoriesByName = /* GraphQL */ `query ListCategoriesByName(
       title
       name
       description
+      communityPosts {
+        nextToken
+        __typename
+      }
       createdAt
       updatedAt
       __typename
@@ -215,6 +250,10 @@ export const getCommunityPost = /* GraphQL */ `query GetCommunityPost($id: ID!) 
       title
       name
       description
+      communityPosts {
+        nextToken
+        __typename
+      }
       createdAt
       updatedAt
       __typename
@@ -239,6 +278,15 @@ export const listCommunityPosts = /* GraphQL */ `query ListCommunityPosts(
       body
       categoryId
       createdAt
+      category {
+        id
+        title
+        name
+        description
+        createdAt
+        updatedAt
+        __typename
+      }
       updatedAt
       __typename
     }
@@ -272,6 +320,15 @@ export const listCommunityPostsByCategoryIdWithCreatedAt = /* GraphQL */ `query 
       body
       categoryId
       createdAt
+      category {
+        id
+        title
+        name
+        description
+        createdAt
+        updatedAt
+        __typename
+      }
       updatedAt
       __typename
     }
