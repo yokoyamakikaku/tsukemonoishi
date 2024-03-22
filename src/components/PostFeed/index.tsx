@@ -1,8 +1,8 @@
-'use client';
+'use client'
 
-import PostFeedItem from "./PostFeedItem";
+import PostFeedItem from "./PostFeedItem"
 
-import { CommunityPost, PremiumPost } from "@/API";
+import { CommunityPost, PremiumPost } from "@/API"
 
 export default function PostFeed ({
   posts
@@ -13,5 +13,5 @@ export default function PostFeed ({
     posts.map((post) => (
       <PostFeedItem key={post.id} post={post} />
     ))
-  );
+  )
 }

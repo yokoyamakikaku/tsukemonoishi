@@ -1,8 +1,8 @@
-import Link from "next/link";
+import Link from "next/link"
 
-import { CommunityPost, PremiumPost } from "@/API";
-import DateTimeLabel from "@/components/DateTimeLabel";
-import MarkdownRenderer from "@/components/MarkdownRenderer";
+import { CommunityPost, PremiumPost } from "@/API"
+import DateTimeLabel from "@/components/DateTimeLabel"
+import MarkdownRenderer from "@/components/MarkdownRenderer"
 
 export default function PostFeedItem ({
   post
@@ -24,5 +24,5 @@ export default function PostFeedItem ({
       </div>
       <MarkdownRenderer markdown={post.body} />
     </div>
-  );
+  )
 }

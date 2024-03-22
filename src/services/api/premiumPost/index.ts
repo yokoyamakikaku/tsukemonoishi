@@ -1,19 +1,19 @@
-import { ApiClient } from '../types';
+import { ApiClient } from '../types'
 
-import * as mutations from '@/graphql/mutations';
-import * as queries from '@/graphql/queries';
-import { CreatePremiumPostInput, DeletePremiumPostInput, ListPremiumPostsQuery, UpdatePremiumPostInput } from '@/API';
+import * as mutations from '@/graphql/mutations'
+import * as queries from '@/graphql/queries'
+import { CreatePremiumPostInput, DeletePremiumPostInput, ListPremiumPostsQuery, UpdatePremiumPostInput } from '@/API'
 
 export function createPremiumPostWithClient (client: ApiClient) {
   return async function createPremiumPost (input: CreatePremiumPostInput) {
     const result = await client.graphql({
       query: mutations.createPremiumPost,
       variables: { input }
-    });
+    })
 
-    if (result.errors) throw new Error(result.errors[0].message);
-    return result.data.createPremiumPost;
-  };
+    if (result.errors) throw new Error(result.errors[0].message)
+    return result.data.createPremiumPost
+  }
 }
 
 export function getPremiumPostWithClient (client: ApiClient) {
@@ -21,11 +21,11 @@ export function getPremiumPostWithClient (client: ApiClient) {
     const result = await client.graphql({
       query: queries.getPremiumPost,
       variables: { id }
-    });
-    if (result.errors) throw new Error(result.errors[0].message);
-    if (!result.data.getPremiumPost) throw new Error('NotFound');
-    return result.data.getPremiumPost;
-  };
+    })
+    if (result.errors) throw new Error(result.errors[0].message)
+    if (!result.data.getPremiumPost) throw new Error('NotFound')
+    return result.data.getPremiumPost
+  }
 }
 
 export function listPremiumPostsWithClient (client: ApiClient) {
@@ -33,15 +33,15 @@ export function listPremiumPostsWithClient (client: ApiClient) {
     const result = await client.graphql({
       query: queries.listPremiumPosts,
       variables: { nextToken }
-    });
-    if (result.errors) throw new Error(result.errors[0].message);
-    if (!result.data.listPremiumPosts) throw new Error('NotFound');
-    if (!result.data.listPremiumPosts.nextToken) return result.data.listPremiumPosts.items;
+    })
+    if (result.errors) throw new Error(result.errors[0].message)
+    if (!result.data.listPremiumPosts) throw new Error('NotFound')
+    if (!result.data.listPremiumPosts.nextToken) return result.data.listPremiumPosts.items
     return [
       ...result.data.listPremiumPosts.items,
       ...(await listPremiumPosts(result.data.listPremiumPosts.nextToken))
-    ];
-  };
+    ]
+  }
 }
 
 export function updatePremiumPostWithClient (client: ApiClient) {
@@ -49,10 +49,10 @@ export function updatePremiumPostWithClient (client: ApiClient) {
     const result = await client.graphql({
       query: mutations.updatePremiumPost,
       variables: { input }
-    });
-    if (result.errors) throw new Error(result.errors[0].message);
-    return result.data.updatePremiumPost;
-  };
+    })
+    if (result.errors) throw new Error(result.errors[0].message)
+    return result.data.updatePremiumPost
+  }
 }
 
 export function deletePremiumPostWithClient (client: ApiClient) {
@@ -60,8 +60,8 @@ export function deletePremiumPostWithClient (client: ApiClient) {
     const result = await client.graphql({
       query: mutations.deletePremiumPost,
       variables: { input }
-    });
-    if (result.errors) throw new Error(result.errors[0].message);
-    return result.data.deletePremiumPost;
-  };
+    })
+    if (result.errors) throw new Error(result.errors[0].message)
+    return result.data.deletePremiumPost
+  }
 }

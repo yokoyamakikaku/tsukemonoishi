@@ -1,4 +1,4 @@
-import MarkdownRenderer from "@/components/MarkdownRenderer";
+import MarkdownRenderer from "@/components/MarkdownRenderer"
 
 const contents = `
 ## 漬物石 プライバシーポリシー
@@ -48,14 +48,14 @@ const contents = `
 
 [問い合わせフォーム](https://docs.google.com/forms/d/e/1FAIpQLScHWg6hovlNCIct6k30laZWlEBfutpYcoljjx1067xdHhtaGQ/viewform)
 
-`;
+`
 
 const PolicyPage = () => {
   return (
     <div>
       <MarkdownRenderer markdown={contents} />
     </div>
-  );
-};
+  )
+}
 
-export default PolicyPage;
+export default PolicyPage

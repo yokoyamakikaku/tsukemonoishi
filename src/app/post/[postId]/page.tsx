@@ -1,6 +1,6 @@
-import ViewPost from "./components/ViewPost";
+import ViewPost from "./components/ViewPost"
 
-import { getCommunityPost } from "@/services/api/communityPost/server";
+import { getCommunityPost } from "@/services/api/communityPost/server"
 
 export default async function PostPage ({
   params: {
@@ -11,8 +11,8 @@ export default async function PostPage ({
     postId: string
   }
 }) {
-  const post = await getCommunityPost(postId);
+  const post = await getCommunityPost(postId)
   return (
     <ViewPost post={post} />
-  );
+  )
 }

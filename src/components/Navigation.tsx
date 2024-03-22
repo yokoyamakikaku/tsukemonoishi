@@ -1,18 +1,18 @@
-'use client';
+'use client'
 
-import { FC, PropsWithChildren } from 'react';
-import Link from 'next/link';
+import { FC, PropsWithChildren } from 'react'
+import Link from 'next/link'
 
-import { useGetAuthStatusQuery } from '@/hooks/auth';
+import { useGetAuthStatusQuery } from '@/hooks/auth'
 
 const NavigationLink: FC<{ href: string } & PropsWithChildren> = ({ href, children}) => {
   return (
     <Link className="grow p-1 hover:bg-gray-50 rounded text-center" href={href}>{children}</Link>
-  );
-};
+  )
+}
 
 export default function Navigation () {
-  const query = useGetAuthStatusQuery();
+  const query = useGetAuthStatusQuery()
 
   return (
     <>
@@ -40,5 +40,5 @@ export default function Navigation () {
         </div>
       </div>
     </>
-  );
+  )
 }

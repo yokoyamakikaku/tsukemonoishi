@@ -1,11 +1,11 @@
-'use client';
+'use client'
 
-import { UseMutationResult } from "@tanstack/react-query";
-import { useForm } from "react-hook-form";
-import { FC } from "react";
-import { confirmSignUp } from "aws-amplify/auth";
+import { UseMutationResult } from "@tanstack/react-query"
+import { useForm } from "react-hook-form"
+import { FC } from "react"
+import { confirmSignUp } from "aws-amplify/auth"
 
-import Button from "@/components/Button";
+import Button from "@/components/Button"
 
 type FormValues = {
   code: string
@@ -24,14 +24,14 @@ const ConfirmSignupForm:FC<ConfirmSignupFormProps> = ({
   username,
   mutation
 }) => {
-  const { register, handleSubmit } = useForm<FormValues>();
+  const { register, handleSubmit } = useForm<FormValues>()
 
   if (typeof username != 'string') {
     return (
       <div>
         <h1>ユーザー名が見つかりません</h1>
       </div>
-    );
+    )
   }
 
   return (
@@ -41,7 +41,7 @@ const ConfirmSignupForm:FC<ConfirmSignupFormProps> = ({
         mutation.mutate({
           username,
           confirmationCode: values.code
-        });
+        })
       })}>
       <div>
         <h1 className="text-xl">アカウントの確認</h1>
@@ -62,7 +62,7 @@ const ConfirmSignupForm:FC<ConfirmSignupFormProps> = ({
         <Button type="submit">確認する</Button>
       </div>
     </form>
-  );
-};
+  )
+}
 
-export default ConfirmSignupForm;
+export default ConfirmSignupForm

@@ -1,8 +1,8 @@
-'use client';
+'use client'
 
-import PostFeed from "@/components/PostFeed";
-import LoadMoreButton from "@/components/PostFeed/LoadMoreButton";
-import { useInfinityListLatestCommunityPostsByCategoryId } from "@/hooks/communityPost";
+import PostFeed from "@/components/PostFeed"
+import LoadMoreButton from "@/components/PostFeed/LoadMoreButton"
+import { useInfinityListLatestCommunityPostsByCategoryId } from "@/hooks/communityPost"
 
 export default function InfinityCategoryPostFeed ({
   categoryId,
@@ -11,7 +11,7 @@ export default function InfinityCategoryPostFeed ({
   categoryId: string
   nextToken?: string | null
 }) {
-  const query = useInfinityListLatestCommunityPostsByCategoryId(categoryId, nextToken);
+  const query = useInfinityListLatestCommunityPostsByCategoryId(categoryId, nextToken)
   return (
     <>
       {query.isSuccess && query.data && (
@@ -23,5 +23,5 @@ export default function InfinityCategoryPostFeed ({
         <LoadMoreButton isFetching={query.isFetching} onClick={() => query.fetchNextPage()} />
       )}
     </>
-  );
+  )
 }

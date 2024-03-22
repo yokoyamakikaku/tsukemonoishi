@@ -1,4 +1,4 @@
-import { serverClient as client } from "../server";
+import { serverClient as client } from "../server"
 
 import {
   createPremiumPostWithClient,
@@ -6,26 +6,26 @@ import {
   getPremiumPostWithClient,
   listPremiumPostsWithClient,
   updatePremiumPostWithClient
-} from ".";
+} from "."
 
-import { CreatePremiumPostInput, DeletePremiumPostInput, UpdatePremiumPostInput } from "@/API";
+import { CreatePremiumPostInput, DeletePremiumPostInput, UpdatePremiumPostInput } from "@/API"
 
 export async function createPremiumPost(input: CreatePremiumPostInput) {
-  return await createPremiumPostWithClient(client)(input);
+  return await createPremiumPostWithClient(client)(input)
 }
 
 export async function getPremiumPost(id: string) {
-  return await getPremiumPostWithClient(client)(id);
+  return await getPremiumPostWithClient(client)(id)
 }
 
 export async function listPremiumPosts(nextToken?: string | null | undefined) {
-  return await listPremiumPostsWithClient(client)(nextToken);
+  return await listPremiumPostsWithClient(client)(nextToken)
 }
 
 export async function updatePremiumPost(input: UpdatePremiumPostInput) {
-  return await updatePremiumPostWithClient(client)(input);
+  return await updatePremiumPostWithClient(client)(input)
 }
 
 export async function deletePremiumPost(input: DeletePremiumPostInput) {
-  return await deletePremiumPostWithClient(client)(input);
+  return await deletePremiumPostWithClient(client)(input)
 }

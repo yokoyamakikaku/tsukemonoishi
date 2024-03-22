@@ -1,11 +1,11 @@
-'use client';
+'use client'
 
-import Link from "next/link";
+import Link from "next/link"
 
-import DateTimeLabel from "@/components/DateTimeLabel";
-import MarkdownRenderer from "@/components/MarkdownRenderer";
-import { useGetCommunityPostQuery } from "@/hooks/communityPost";
-import { getCommunityPost } from "@/services/api/communityPost/server";
+import DateTimeLabel from "@/components/DateTimeLabel"
+import MarkdownRenderer from "@/components/MarkdownRenderer"
+import { useGetCommunityPostQuery } from "@/hooks/communityPost"
+import { getCommunityPost } from "@/services/api/communityPost/server"
 
 export default function ViewCommunityPost ({
   post
@@ -14,7 +14,7 @@ export default function ViewCommunityPost ({
 }) {
   const query = useGetCommunityPostQuery(post.id, {
     initialData: post
-  });
+  })
 
   return (
     <>
@@ -40,5 +40,5 @@ export default function ViewCommunityPost ({
         </div>
       )}
     </>
-  );
+  )
 }

@@ -1,8 +1,8 @@
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query"
 
-import { UseApiMutationOptions, UseApiQueryOptions } from "./types";
+import { UseApiMutationOptions, UseApiQueryOptions } from "./types"
 
-import { createAccount, getAccount, listAccounts, updateAccount, deleteAccount } from "@/services/api/account/client";
+import { createAccount, getAccount, listAccounts, updateAccount, deleteAccount } from "@/services/api/account/client"
 
 export function useCreateAccountMutation(
   options?: UseApiMutationOptions<typeof createAccount>
@@ -10,24 +10,24 @@ export function useCreateAccountMutation(
   return useMutation({
     mutationFn: createAccount,
     ...options,
-  });
+  })
 }
 
 export function useGetAccountQuery(id: any, options?: UseApiQueryOptions<typeof getAccount>) {
   return useQuery({
     enabled: !!id,
     queryKey: ['accounts', id],
-    async queryFn () { return await getAccount(id as string);},
+    async queryFn () { return await getAccount(id as string)},
     ...options,
-  });
+  })
 }
 
 export function useListAccounts(options?: UseApiQueryOptions<typeof listAccounts>) {
   return useQuery({
     queryKey: ['accounts'],
-    async queryFn () { return await listAccounts();},
+    async queryFn () { return await listAccounts()},
     ...options,
-  });
+  })
 }
 
 export function useUpdateAccountMutation(
@@ -36,7 +36,7 @@ export function useUpdateAccountMutation(
   return useMutation({
     mutationFn: updateAccount,
     ...options,
-  });
+  })
 }
 
 export function useDeleteAccountMutation(
@@ -45,5 +45,5 @@ export function useDeleteAccountMutation(
   return useMutation({
     mutationFn: deleteAccount,
     ...options,
-  });
+  })
 }

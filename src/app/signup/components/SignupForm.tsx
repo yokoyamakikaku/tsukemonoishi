@@ -1,12 +1,12 @@
-'use client';
+'use client'
 
-import { UseMutationResult } from "@tanstack/react-query";
-import Link from "next/link";
-import { useForm } from "react-hook-form";
-import { FC } from "react";
-import { signUp } from "aws-amplify/auth";
+import { UseMutationResult } from "@tanstack/react-query"
+import Link from "next/link"
+import { useForm } from "react-hook-form"
+import { FC } from "react"
+import { signUp } from "aws-amplify/auth"
 
-import Button from "@/components/Button";
+import Button from "@/components/Button"
 
 type FormValues = {
   email: string
@@ -24,7 +24,7 @@ interface SignupFormProps {
 const SignupForm:FC<SignupFormProps> = ({
   mutation
 }) => {
-  const { register, handleSubmit } = useForm<FormValues>();
+  const { register, handleSubmit } = useForm<FormValues>()
 
   return (
     <form
@@ -62,7 +62,7 @@ const SignupForm:FC<SignupFormProps> = ({
         <Link className="underline py-2 px-3 hover:bg-gray-100 rounded" href="/login">ログイン</Link>
       </div>
     </form>
-  );
-};
+  )
+}
 
-export default SignupForm;
+export default SignupForm

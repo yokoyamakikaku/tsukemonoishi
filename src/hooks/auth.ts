@@ -1,6 +1,6 @@
-'use client';
+'use client'
 
-import { UseMutationOptions, useMutation, useQuery } from "@tanstack/react-query";
+import { UseMutationOptions, useMutation, useQuery } from "@tanstack/react-query"
 import {
   getCurrentUser,
   fetchUserAttributes,
@@ -8,33 +8,33 @@ import {
   signUp,
   signIn,
   confirmSignUp
-} from "@aws-amplify/auth";
+} from "@aws-amplify/auth"
 
 export function useGetAuthStatusQuery () {
   return useQuery({
     queryKey: ["authStatus"],
     async queryFn () {
       try {
-        await getCurrentUser();
-        return 'AUTHORIZED';
+        await getCurrentUser()
+        return 'AUTHORIZED'
       } catch {
-        return 'NOT_AUTHORIZED';
+        return 'NOT_AUTHORIZED'
       }
     }
-  });
+  })
 }
 
 export function useGetProfileQuery () {
   return useQuery({
     queryKey: ["profile"],
     async queryFn () {
-      const userAttributes = await fetchUserAttributes();
-      const id = userAttributes.sub;
-      const email = userAttributes.email;
-      const name = userAttributes.name;
-      return { id, email, name };
+      const userAttributes = await fetchUserAttributes()
+      const id = userAttributes.sub
+      const email = userAttributes.email
+      const name = userAttributes.name
+      return { id, email, name }
     }
-  });
+  })
 }
 
 export function useSignUpMutation (
@@ -48,7 +48,7 @@ export function useSignUpMutation (
   return useMutation({
     mutationFn: signUp,
     ...options
-  });
+  })
 }
 
 export function useSignInMutation (
@@ -62,7 +62,7 @@ export function useSignInMutation (
   return useMutation({
     mutationFn: signIn,
     ...options
-  });
+  })
 }
 
 export function useConfirmSignUpMutation (
@@ -76,7 +76,7 @@ export function useConfirmSignUpMutation (
   return useMutation({
     mutationFn: confirmSignUp,
     ...options
-  });
+  })
 }
 
 export function useSignOutMutation (
@@ -84,8 +84,8 @@ export function useSignOutMutation (
 ) {
   return useMutation({
     async mutationFn () {
-      signOut();
+      signOut()
     },
     ...options
-  });
+  })
 }

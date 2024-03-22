@@ -1,7 +1,7 @@
-import InfinityCategoryPostFeed from "./InfinityCategoryPostFeed";
+import InfinityCategoryPostFeed from "./InfinityCategoryPostFeed"
 
-import PostFeed from "@/components/PostFeed";
-import { listPaginatedLatestCommunityPostsByCategoryId } from "@/services/api/communityPost/server";
+import PostFeed from "@/components/PostFeed"
+import { listPaginatedLatestCommunityPostsByCategoryId } from "@/services/api/communityPost/server"
 
 export function ViewLatestCategoryPosts ({
   categoryId,
@@ -18,5 +18,5 @@ export function ViewLatestCategoryPosts ({
         categoryId={categoryId}
         nextToken={page.nextToken} />
     </>
-  );
+  )
 }

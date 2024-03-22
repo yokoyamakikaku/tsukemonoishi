@@ -1,20 +1,20 @@
-import './globals.css';
-import type { Metadata } from 'next';
-import { Zen_Old_Mincho } from 'next/font/google';
+import './globals.css'
+import type { Metadata } from 'next'
+import { Zen_Old_Mincho } from 'next/font/google'
 
-import Navigation from '@/components/Navigation';
-import Footer from '@/components/Footer';
-import Providers from '@/components/Providers';
+import Navigation from '@/components/Navigation'
+import Footer from '@/components/Footer'
+import Providers from '@/components/Providers'
 
 const font = Zen_Old_Mincho({
   weight: '400',
   subsets: ["latin"],
-});
+})
 
 export const metadata: Metadata = {
   title: '漬物石',
   description: '漬物石の情報サイト'
-};
+}
 
 export default function RootLayout ({
   children
@@ -41,5 +41,5 @@ export default function RootLayout ({
         </Providers>
       </body>
     </html>
-  );
+  )
 }

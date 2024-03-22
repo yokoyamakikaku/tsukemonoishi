@@ -1,8 +1,8 @@
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query"
 
-import { UseApiMutationOptions, UseApiQueryOptions } from "./types";
+import { UseApiMutationOptions, UseApiQueryOptions } from "./types"
 
-import { createCategory, getCategory, listCategories, updateCategory, deleteCategory } from "@/services/api/category/client";
+import { createCategory, getCategory, listCategories, updateCategory, deleteCategory } from "@/services/api/category/client"
 
 export function useCreateCategoryMutation(
   options?: UseApiMutationOptions<typeof createCategory>
@@ -10,7 +10,7 @@ export function useCreateCategoryMutation(
   return useMutation({
     mutationFn: createCategory,
     ...options,
-  });
+  })
 }
 
 export function useGetCategoryQuery(
@@ -20,17 +20,17 @@ export function useGetCategoryQuery(
   return useQuery({
     enabled: !!id,
     queryKey: ['categories', id],
-    async queryFn () { return await getCategory(id as string);},
+    async queryFn () { return await getCategory(id as string)},
     ...options,
-  });
+  })
 }
 
 export function useListCategories(options?: UseApiQueryOptions<typeof listCategories>) {
   return useQuery({
     queryKey: ['categories'],
-    async queryFn () { return await listCategories();},
+    async queryFn () { return await listCategories()},
     ...options,
-  });
+  })
 }
 
 export function useUpdateCategoryMutation(
@@ -39,7 +39,7 @@ export function useUpdateCategoryMutation(
   return useMutation({
     mutationFn: updateCategory,
     ...options,
-  });
+  })
 }
 
 export function useDeleteCategoryMutation(
@@ -48,5 +48,5 @@ export function useDeleteCategoryMutation(
   return useMutation({
     mutationFn: deleteCategory,
     ...options,
-  });
+  })
 }

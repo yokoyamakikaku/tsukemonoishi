@@ -1,8 +1,8 @@
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query"
 
-import { UseApiMutationOptions, UseApiQueryOptions } from "./types";
+import { UseApiMutationOptions, UseApiQueryOptions } from "./types"
 
-import { createPremiumPost, getPremiumPost, listPremiumPosts, updatePremiumPost, deletePremiumPost } from "@/services/api/premiumPost/client";
+import { createPremiumPost, getPremiumPost, listPremiumPosts, updatePremiumPost, deletePremiumPost } from "@/services/api/premiumPost/client"
 
 export function useCreatePremiumPostMutation(
   options?: UseApiMutationOptions<typeof createPremiumPost>
@@ -10,24 +10,24 @@ export function useCreatePremiumPostMutation(
   return useMutation({
     mutationFn: createPremiumPost,
     ...options,
-  });
+  })
 }
 
 export function useGetPremiumPostQuery(id: any, options?: UseApiQueryOptions<typeof getPremiumPost>) {
   return useQuery({
     enabled: !!id,
     queryKey: ['premiumPosts', id],
-    async queryFn () { return await getPremiumPost(id as string);},
+    async queryFn () { return await getPremiumPost(id as string)},
     ...options,
-  });
+  })
 }
 
 export function useListPremiumPosts(options?: UseApiQueryOptions<typeof listPremiumPosts>) {
   return useQuery({
     queryKey: ['premiumPosts'],
-    async queryFn () { return await listPremiumPosts();},
+    async queryFn () { return await listPremiumPosts()},
     ...options,
-  });
+  })
 }
 
 export function useUpdatePremiumPostMutation(
@@ -36,7 +36,7 @@ export function useUpdatePremiumPostMutation(
   return useMutation({
     mutationFn: updatePremiumPost,
     ...options,
-  });
+  })
 }
 
 export function useDeletePremiumPostMutation(
@@ -45,5 +45,5 @@ export function useDeletePremiumPostMutation(
   return useMutation({
     mutationFn: deletePremiumPost,
     ...options,
-  });
+  })
 }

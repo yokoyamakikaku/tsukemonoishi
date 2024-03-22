@@ -1,4 +1,4 @@
-import { generateClient } from "aws-amplify/api";
+import { generateClient } from "aws-amplify/api"
 
 import {
   createCategoryWithClient,
@@ -7,36 +7,36 @@ import {
   getCategoryWithClient,
   listCategoriesWithClient,
   updateCategoryWithClient
-} from ".";
+} from "."
 
-import { CreateCategoryInput, DeleteCategoryInput, UpdateCategoryInput } from "@/API";
+import { CreateCategoryInput, DeleteCategoryInput, UpdateCategoryInput } from "@/API"
 
 export async function createCategory(input: CreateCategoryInput) {
-  const client = generateClient();
-  return await createCategoryWithClient(client)(input);
+  const client = generateClient()
+  return await createCategoryWithClient(client)(input)
 }
 
 export async function getCategory(id: string) {
-  const client = generateClient();
-  return await getCategoryWithClient(client)(id);
+  const client = generateClient()
+  return await getCategoryWithClient(client)(id)
 }
 
 export async function getCategoryByName(name: string) {
-  const client = generateClient();
-  return await getCategoryByNameWithClient(client)(name);
+  const client = generateClient()
+  return await getCategoryByNameWithClient(client)(name)
 }
 
 export async function listCategories(nextToken?: string | null | undefined) {
-  const client = generateClient();
-  return await listCategoriesWithClient(client)(nextToken);
+  const client = generateClient()
+  return await listCategoriesWithClient(client)(nextToken)
 }
 
 export async function updateCategory(input: UpdateCategoryInput) {
-  const client = generateClient();
-  return await updateCategoryWithClient(client)(input);
+  const client = generateClient()
+  return await updateCategoryWithClient(client)(input)
 }
 
 export async function deleteCategory(input: DeleteCategoryInput) {
-  const client = generateClient();
-  return await deleteCategoryWithClient(client)(input);
+  const client = generateClient()
+  return await deleteCategoryWithClient(client)(input)
 }
