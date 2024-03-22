@@ -1,11 +1,11 @@
-'use client'
+'use client';
 
-import Link from "next/link"
-import { useForm } from "react-hook-form"
-import { useRouter } from "next/navigation"
+import Link from "next/link";
+import { useForm } from "react-hook-form";
+import { useRouter } from "next/navigation";
 
-import { useSignInMutation } from "@/hooks/auth"
-import Button from "@/components/Button"
+import { useSignInMutation } from "@/hooks/auth";
+import Button from "@/components/Button";
 
 type FormValues = {
   email: string
@@ -13,10 +13,10 @@ type FormValues = {
 }
 
 const Login = () => {
-  const router = useRouter()
-  const { register, handleSubmit, control } = useForm<FormValues>()
+  const router = useRouter();
+  const { register, handleSubmit, control } = useForm<FormValues>();
 
-  const mutation = useSignInMutation()
+  const mutation = useSignInMutation();
 
   return (
     <form
@@ -54,7 +54,7 @@ const Login = () => {
         <Link className="underline py-2 px-3 hover:bg-gray-100 rounded" href="/signup">アカウントの作成</Link>
       </div>
     </form>
-  )
-}
+  );
+};
 
-export default Login
+export default Login;

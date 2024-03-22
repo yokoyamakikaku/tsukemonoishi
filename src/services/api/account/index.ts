@@ -1,19 +1,19 @@
-import { ApiClient } from '../types'
+import { ApiClient } from '../types';
 
-import * as mutations from '@/graphql/mutations'
-import * as queries from '@/graphql/queries'
-import { CreateAccountInput, DeleteAccountInput, ListAccountsQuery, UpdateAccountInput } from '@/API'
+import * as mutations from '@/graphql/mutations';
+import * as queries from '@/graphql/queries';
+import { CreateAccountInput, DeleteAccountInput, ListAccountsQuery, UpdateAccountInput } from '@/API';
 
 export function createAccountWithClient (client: ApiClient) {
   return async function createAccount (input: CreateAccountInput) {
     const result = await client.graphql({
       query: mutations.createAccount,
       variables: { input }
-    })
+    });
 
-    if (result.errors) throw new Error(result.errors[0].message)
-    return result.data.createAccount
-  }
+    if (result.errors) throw new Error(result.errors[0].message);
+    return result.data.createAccount;
+  };
 }
 
 export function getAccountWithClient (client: ApiClient) {
@@ -21,11 +21,11 @@ export function getAccountWithClient (client: ApiClient) {
     const result = await client.graphql({
       query: queries.getAccount,
       variables: { id }
-    })
-    if (result.errors) throw new Error(result.errors[0].message)
-    if (!result.data.getAccount) throw new Error('NotFound')
-    return result.data.getAccount
-  }
+    });
+    if (result.errors) throw new Error(result.errors[0].message);
+    if (!result.data.getAccount) throw new Error('NotFound');
+    return result.data.getAccount;
+  };
 }
 
 export function listAccountsWithClient (client: ApiClient) {
@@ -33,15 +33,15 @@ export function listAccountsWithClient (client: ApiClient) {
     const result = await client.graphql({
       query: queries.listAccounts,
       variables: { nextToken }
-    })
-    if (result.errors) throw new Error(result.errors[0].message)
-    if (!result.data.listAccounts) throw new Error('NotFound')
-    if (!result.data.listAccounts.nextToken) return result.data.listAccounts.items
+    });
+    if (result.errors) throw new Error(result.errors[0].message);
+    if (!result.data.listAccounts) throw new Error('NotFound');
+    if (!result.data.listAccounts.nextToken) return result.data.listAccounts.items;
     return [
       ...result.data.listAccounts.items,
       ...(await listAccounts(result.data.listAccounts.nextToken))
-    ]
-  }
+    ];
+  };
 }
 
 export function updateAccountWithClient (client: ApiClient) {
@@ -49,10 +49,10 @@ export function updateAccountWithClient (client: ApiClient) {
     const result = await client.graphql({
       query: mutations.updateAccount,
       variables: { input }
-    })
-    if (result.errors) throw new Error(result.errors[0].message)
-    return result.data.updateAccount
-  }
+    });
+    if (result.errors) throw new Error(result.errors[0].message);
+    return result.data.updateAccount;
+  };
 }
 
 export function deleteAccountWithClient (client: ApiClient) {
@@ -60,8 +60,8 @@ export function deleteAccountWithClient (client: ApiClient) {
     const result = await client.graphql({
       query: mutations.deleteAccount,
       variables: { input }
-    })
-    if (result.errors) throw new Error(result.errors[0].message)
-    return result.data.deleteAccount
-  }
+    });
+    if (result.errors) throw new Error(result.errors[0].message);
+    return result.data.deleteAccount;
+  };
 }

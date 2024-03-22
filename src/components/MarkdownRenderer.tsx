@@ -1,7 +1,7 @@
-import React, { FC } from 'react'
-import { marked } from 'marked'
+import React, { FC } from 'react';
+import { marked } from 'marked';
 
-const renderer = new marked.Renderer()
+const renderer = new marked.Renderer();
 
 renderer.heading = (text, level) => {
   const size = ['text-4xl', 'text-3xl', 'text-2xl', 'text-xl', 'text-lg', 'text-base'][level - 1];
@@ -47,11 +47,11 @@ renderer.blockquote = (quote) => {
 
 const markedOptions = {
   renderer: renderer
-}
+};
 
 const MarkdownRenderer:FC<{ markdown: string}> = ({ markdown }) => {
-  const html = marked(markdown, markedOptions)
-  return <div dangerouslySetInnerHTML={{ __html: html }} />
-}
+  const html = marked(markdown, markedOptions);
+  return <div dangerouslySetInnerHTML={{ __html: html }} />;
+};
 
-export default MarkdownRenderer
+export default MarkdownRenderer;

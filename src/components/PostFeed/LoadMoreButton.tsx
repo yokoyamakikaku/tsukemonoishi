@@ -15,5 +15,5 @@ export default function LoadMoreButton ({
       <>さらに記事を見る</>
     )}
   </button>
-  )
+  );
 }

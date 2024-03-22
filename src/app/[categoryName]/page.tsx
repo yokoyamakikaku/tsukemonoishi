@@ -9,8 +9,8 @@ export default async function CategoryPage ({
 }: {
   params: { categoryName: string }
 }) {
-  const category = await getCategoryByName(categoryName)
-  const page = await listPaginatedLatestCommunityPostsByCategoryId(category.id)
+  const category = await getCategoryByName(categoryName);
+  const page = await listPaginatedLatestCommunityPostsByCategoryId(category.id);
   return (
     <>
       <ViewCategorySummary
@@ -19,5 +19,5 @@ export default async function CategoryPage ({
         categoryId={category.id}
         page={page} />
     </>
-  )
+  );
 }

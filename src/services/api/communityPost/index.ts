@@ -1,19 +1,19 @@
-import { ApiClient } from '../types'
+import { ApiClient } from '../types';
 
-import * as mutations from '@/graphql/mutations'
-import * as queries from '@/graphql/queries'
-import { CreateCommunityPostInput, DeleteCommunityPostInput, ListCommunityPostsQuery, UpdateCommunityPostInput } from '@/API'
+import * as mutations from '@/graphql/mutations';
+import * as queries from '@/graphql/queries';
+import { CreateCommunityPostInput, DeleteCommunityPostInput, ListCommunityPostsQuery, UpdateCommunityPostInput } from '@/API';
 
 export function createCommunityPostWithClient (client: ApiClient) {
   return async function createCommunityPost (input: CreateCommunityPostInput) {
     const result = await client.graphql({
       query: mutations.createCommunityPost,
       variables: { input }
-    })
+    });
 
-    if (result.errors) throw new Error(result.errors[0].message)
-    return result.data.createCommunityPost
-  }
+    if (result.errors) throw new Error(result.errors[0].message);
+    return result.data.createCommunityPost;
+  };
 }
 
 export function getCommunityPostWithClient (client: ApiClient) {
@@ -22,11 +22,11 @@ export function getCommunityPostWithClient (client: ApiClient) {
       query: queries.getCommunityPost,
       variables: { id },
       authMode: 'apiKey'
-    })
-    if (result.errors) throw new Error(result.errors[0].message)
-    if (!result.data.getCommunityPost) throw new Error('NotFound')
-    return result.data.getCommunityPost
-  }
+    });
+    if (result.errors) throw new Error(result.errors[0].message);
+    if (!result.data.getCommunityPost) throw new Error('NotFound');
+    return result.data.getCommunityPost;
+  };
 }
 
 export function listCommunityPostsWithClient (client: ApiClient) {
@@ -35,15 +35,15 @@ export function listCommunityPostsWithClient (client: ApiClient) {
       query: queries.listCommunityPosts,
       variables: { nextToken },
       authMode: 'apiKey'
-    })
-    if (result.errors) throw new Error(result.errors[0].message)
-    if (!result.data.listCommunityPosts) throw new Error('NotFound')
-    if (!result.data.listCommunityPosts.nextToken) return result.data.listCommunityPosts.items
+    });
+    if (result.errors) throw new Error(result.errors[0].message);
+    if (!result.data.listCommunityPosts) throw new Error('NotFound');
+    if (!result.data.listCommunityPosts.nextToken) return result.data.listCommunityPosts.items;
     return [
       ...result.data.listCommunityPosts.items,
       ...(await listCommunityPosts(result.data.listCommunityPosts.nextToken))
-    ]
-  }
+    ];
+  };
 }
 
 export function listPaginatedLatestCommunityPostsWithClient (client: ApiClient) {
@@ -55,10 +55,10 @@ export function listPaginatedLatestCommunityPostsWithClient (client: ApiClient) 
         limit: 1
       },
       authMode: 'apiKey'
-    })
-    if (result.errors) throw new Error(result.errors[0].message)
-    return result.data.listCommunityPosts
-  }
+    });
+    if (result.errors) throw new Error(result.errors[0].message);
+    return result.data.listCommunityPosts;
+  };
 }
 
 export function listPaginatedLatestCommunityPostsByCategoryIdWithClient (client: ApiClient) {
@@ -71,10 +71,10 @@ export function listPaginatedLatestCommunityPostsByCategoryIdWithClient (client:
         limit: 1
       },
       authMode: 'apiKey',
-    })
-    if (result.errors) throw new Error(result.errors[0].message)
-    return result.data.listCommunityPostsByCategoryIdWithCreatedAt
-  }
+    });
+    if (result.errors) throw new Error(result.errors[0].message);
+    return result.data.listCommunityPostsByCategoryIdWithCreatedAt;
+  };
 }
 
 export function updateCommunityPostWithClient (client: ApiClient) {
@@ -82,10 +82,10 @@ export function updateCommunityPostWithClient (client: ApiClient) {
     const result = await client.graphql({
       query: mutations.updateCommunityPost,
       variables: { input }
-    })
-    if (result.errors) throw new Error(result.errors[0].message)
-    return result.data.updateCommunityPost
-  }
+    });
+    if (result.errors) throw new Error(result.errors[0].message);
+    return result.data.updateCommunityPost;
+  };
 }
 
 export function deleteCommunityPostWithClient (client: ApiClient) {
@@ -93,8 +93,8 @@ export function deleteCommunityPostWithClient (client: ApiClient) {
     const result = await client.graphql({
       query: mutations.deleteCommunityPost,
       variables: { input }
-    })
-    if (result.errors) throw new Error(result.errors[0].message)
-    return result.data.deleteCommunityPost
-  }
+    });
+    if (result.errors) throw new Error(result.errors[0].message);
+    return result.data.deleteCommunityPost;
+  };
 }

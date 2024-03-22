@@ -10,7 +10,7 @@ export function useCreateCommunityPostMutation(
   return useMutation({
     mutationFn: createCommunityPost,
     ...options,
-  })
+  });
 }
 
 export function useGetCommunityPostQuery(
@@ -20,17 +20,17 @@ export function useGetCommunityPostQuery(
   return useQuery({
     enabled: !!id,
     queryKey: ['communityPosts', id],
-    async queryFn () { return await getCommunityPost(id as string)},
+    async queryFn () { return await getCommunityPost(id as string);},
     ...options,
-  })
+  });
 }
 
 export function useListCommunityPosts(options?: UseApiQueryOptions<typeof listCommunityPosts>) {
   return useQuery({
     queryKey: ['communityPosts'],
-    async queryFn () { return await listCommunityPosts()},
+    async queryFn () { return await listCommunityPosts();},
     ...options,
-  })
+  });
 }
 
 export function useUpdateCommunityPostMutation(
@@ -39,7 +39,7 @@ export function useUpdateCommunityPostMutation(
   return useMutation({
     mutationFn: updateCommunityPost,
     ...options,
-  })
+  });
 }
 
 export function useDeleteCommunityPostMutation(
@@ -48,7 +48,7 @@ export function useDeleteCommunityPostMutation(
   return useMutation({
     mutationFn: deleteCommunityPost,
     ...options,
-  })
+  });
 }
 
 export function useInfinityListLatestCommunityPosts (nextToken?: string | null | undefined) {
@@ -64,12 +64,12 @@ export function useInfinityListLatestCommunityPosts (nextToken?: string | null |
     queryKey: ['latest'],
     initialPageParam: nextToken,
     getNextPageParam (lastPage) {
-      return lastPage.nextToken
+      return lastPage.nextToken;
     },
     async queryFn ({ pageParam: nextToken }) {
-      return await listPaginatedLatestCommunityPosts(nextToken)
+      return await listPaginatedLatestCommunityPosts(nextToken);
     }
-  })
+  });
 }
 
 export function useInfinityListLatestCommunityPostsByCategoryId (
@@ -89,10 +89,10 @@ export function useInfinityListLatestCommunityPostsByCategoryId (
     queryKey: ['latest', categoryId ?? 'none'],
     initialPageParam: nextToken,
     getNextPageParam (lastPage) {
-      return lastPage.nextToken
+      return lastPage.nextToken;
     },
     async queryFn ({ pageParam: nextToken }) {
-      return await listPaginatedLatestCommunityPostsByCategoryId(categoryId as string, nextToken)
+      return await listPaginatedLatestCommunityPostsByCategoryId(categoryId as string, nextToken);
     }
-  })
+  });
 }

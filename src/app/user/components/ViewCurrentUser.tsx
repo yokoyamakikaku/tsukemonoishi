@@ -1,18 +1,18 @@
-'use client'
+'use client';
 
-import { useRouter } from "next/navigation"
+import { useRouter } from "next/navigation";
 
-import { useGetProfileQuery, useSignOutMutation } from "@/hooks/auth"
-import Button from "@/components/Button"
+import { useGetProfileQuery, useSignOutMutation } from "@/hooks/auth";
+import Button from "@/components/Button";
 
 export default function ViewCurrentUser() {
-  const router = useRouter()
-  const query = useGetProfileQuery()
+  const router = useRouter();
+  const query = useGetProfileQuery();
   const mutation = useSignOutMutation({
     onSuccess() {
-      router.replace('/')
+      router.replace('/');
     }
-  })
+  });
 
   return (
     <div>
@@ -46,5 +46,5 @@ export default function ViewCurrentUser() {
         </Button>
       </div>
     </div>
-  )
+  );
 }
