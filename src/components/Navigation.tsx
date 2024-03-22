@@ -30,6 +30,7 @@ export default function Navigation () {
           <NavigationLink href="/usage">漬物石の使い方</NavigationLink>
           <NavigationLink href="/history">漬物石の歴史</NavigationLink>
           <NavigationLink href="/recommendations">漬物石のおすすめ</NavigationLink>
+          <NavigationLink href="https://game.tsukemonoishi.net">ゲーム</NavigationLink>
           {query.isSuccess && (
             query.data === "AUTHORIZED" ? (
               <NavigationLink href="/user">マイページ</NavigationLink>
