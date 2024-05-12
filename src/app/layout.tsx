@@ -5,8 +5,7 @@ import { Zen_Old_Mincho } from 'next/font/google'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import Providers from '@/components/Providers'
-import TrackPageView from '@/components/TrackPageView'
-import { GOOGLE_ANALYTICS_MEASUREMENT_ID } from '@/constants'
+import GoogleAnalytics from '@/components/GoogleAnalytics'
 
 const font = Zen_Old_Mincho({
   weight: '400',
@@ -32,17 +31,6 @@ export default function RootLayout ({
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1057611392436338"
           crossOrigin="anonymous">
         </script>
-        <script async src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ANALYTICS_MEASUREMENT_ID}`} ></script>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', '${GOOGLE_ANALYTICS_MEASUREMENT_ID}');
-          `,
-          }}
-        />
       </head>
       <body className={font.className}>
         <Providers>
@@ -52,7 +40,7 @@ export default function RootLayout ({
           </div>
           <Footer />
         </Providers>
-        <TrackPageView />
+        <GoogleAnalytics />
       </body>
     </html>
   )
