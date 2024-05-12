@@ -19,7 +19,7 @@ export default function GoogleAnalytics ({
     }
 
     const gtagScript = createGtagScriptElement(measurementId)
-    document.body.appendChild(gtagScript)
+    document.head.prepend(gtagScript)
 
     gtagScript.addEventListener('load', function () {
       window.dataLayer = window.dataLayer || []
@@ -30,7 +30,7 @@ export default function GoogleAnalytics ({
     }, { once: true })
 
     return function cleanup () {
-      document.body.removeChild(gtagScript)
+      document.head.removeChild(gtagScript)
     }
   }, [measurementId, pathname])
 
