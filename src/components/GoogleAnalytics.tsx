@@ -2,7 +2,7 @@
 
 import { usePathname, useSearchParams } from "next/navigation"
 import Script from "next/script"
-import { useEffect } from "react"
+import { Suspense, useEffect } from "react"
 
 import { GOOGLE_ANALYTICS_MEASUREMENT_ID } from "@/constants"
 
@@ -12,7 +12,7 @@ export const pageview = (path: string) => {
   })
 }
 
-export default function GoogleAnalytics () {
+function GoogleAnalyticsContent () {
   const pathname = usePathname()
   const searchParams = useSearchParams()
 
@@ -38,5 +38,13 @@ export default function GoogleAnalytics () {
         `}
       </Script>
     </>
+  )
+}
+
+export default function GoogleAnalytics () {
+  return (
+    <Suspense>
+      <GoogleAnalyticsContent />
+    </Suspense>
   )
 }
