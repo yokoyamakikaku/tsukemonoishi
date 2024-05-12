@@ -2,6 +2,8 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Zen_Old_Mincho } from 'next/font/google'
 
+import GoogleAnalytics from './components/GoogleAnalytics'
+
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import Providers from '@/components/Providers'
@@ -39,6 +41,7 @@ export default function RootLayout ({
           </div>
           <Footer />
         </Providers>
+        <GoogleAnalytics />
       </body>
     </html>
   )
