@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { Zen_Old_Mincho } from 'next/font/google'
 
 import GoogleAnalytics from './components/GoogleAnalytics'
+import { GOOGLE_ANALYTICS_MEASUREMENT_ID } from './components/GoogleAnalytics/constants'
 
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
@@ -41,7 +42,8 @@ export default function RootLayout ({
           </div>
           <Footer />
         </Providers>
-        <GoogleAnalytics />
+        <GoogleAnalytics
+          measurementId={GOOGLE_ANALYTICS_MEASUREMENT_ID} />
       </body>
     </html>
   )

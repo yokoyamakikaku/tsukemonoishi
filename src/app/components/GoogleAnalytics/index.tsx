@@ -6,11 +6,9 @@ import { useEffect } from 'react'
 import { createGtagScriptElement } from './utilities'
 
 export default function GoogleAnalytics ({
-  measurementId,
-  streamId,
+  measurementId
 }: {
   measurementId?: string | null
-  streamId?: string | null
 }) {
   const pathname = usePathname()
 
