@@ -24,7 +24,7 @@ export default function GoogleAnalytics ({
     gtagScript.addEventListener('load', function () {
       window.dataLayer = window.dataLayer || []
       const dataLayer = window.dataLayer
-      function gtag(...args: any[]){dataLayer.push(...args)}
+      function gtag(...args: any[]){dataLayer.push(args)}
       gtag('js', new Date())
       gtag('config', measurementId)
       console.info('Google Analytics is loaded pathname:', pathname, window.location.href)
